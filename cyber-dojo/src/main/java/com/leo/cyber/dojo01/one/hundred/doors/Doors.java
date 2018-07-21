@@ -7,9 +7,11 @@ public class Doors {
 	private static final int MAX = 100;
 
 	public static List<Integer> getSwitchList(int seed) {
+		int current = seed;
 		List<Integer> result = new ArrayList<>();
-		while (seed <= MAX) {
-			result.add(seed++);
+		while (current <= MAX) {
+			result.add(current);
+			current += seed;
 		}
 		return result;
 	}
