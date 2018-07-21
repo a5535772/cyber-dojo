@@ -23,4 +23,11 @@ public class DoorsOf100Test {
 		assertThat(list.size()).isEqualTo(50);
 		assertThat(list.get(list.size()-1)).isEqualTo(100);
 	}	
+	
+	@Test
+	public void shoud_visit_100_times_and_max_is_99_when_seed_is_3() {
+		List<Integer> list=Doors.getSwitchList(3);
+		assertThat(list.size()).isEqualTo(33);
+		assertThat(list.get(list.size()-1)).isEqualTo(99);
+	}
 }
