@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Doors {
+	private Doors() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	private static final int MAX = 100;
 
 	public static List<Integer> getSwitchList(int seed) {
