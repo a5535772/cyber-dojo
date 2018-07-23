@@ -79,7 +79,6 @@ public class DoorsOf100Test {
 	@Test
 	public void 相邻两次的开本结果相反() {
 		int seed=new Random().nextInt(98)+1;
-		System.out.println(seed);
 		List<Door> doorLessList = Doors.visit(seed);
 		List<Door> doorMoreList = Doors.visit(seed+1);
 		assertThat(doorLessList.size()).isEqualTo(doorMoreList.size());
