@@ -3,6 +3,7 @@ package com.leo.cyber.dojo01.one.hundred.doors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Random;
 
 import org.junit.Test;
 
@@ -77,15 +78,16 @@ public class DoorsOf100Test {
 
 	@Test
 	public void 相邻两次的开本结果相反() {
-		int oppenTime=99;
-		List<Door> doorLessList = Doors.visit(oppenTime);
-		List<Door> doorMoreList = Doors.visit(oppenTime+1);
+		int seed=new Random().nextInt(98)+1;
+		System.out.println(seed);
+		List<Door> doorLessList = Doors.visit(seed);
+		List<Door> doorMoreList = Doors.visit(seed+1);
 		assertThat(doorLessList.size()).isEqualTo(doorMoreList.size());
 		for (int index = 0; index < doorLessList.size(); index++) {
 			Door doorLess = doorLessList.get(index);
 			Door doorMore = doorMoreList.get(index);
 			assertThat(doorLess.getDoorNum()).isEqualTo(doorMore.getDoorNum());
-			if (doorMore.getDoorNum() % (oppenTime+1) == 0) {
+			if (doorMore.getDoorNum() % (seed+1) == 0) {
 				assertThat(doorLess.isOpen()).isEqualTo(!doorMore.isOpen());
 			}
 		}
