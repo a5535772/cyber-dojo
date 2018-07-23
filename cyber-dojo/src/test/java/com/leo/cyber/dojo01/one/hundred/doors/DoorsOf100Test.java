@@ -2,9 +2,6 @@ package com.leo.cyber.dojo01.one.hundred.doors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Test;
@@ -64,7 +61,7 @@ public class DoorsOf100Test {
 	}
 
 	@Test
-	public void all_cardinal_doors_should_be_open_when_visit_3_time() {
+	public void 开门三次和开门两次的结果是相反的() {
 		List<Door> doors2 = Doors.visit(2);
 		List<Door> doors3 = Doors.visit(3);
 		assertThat(doors2.size()).isEqualTo(doors3.size());
@@ -72,11 +69,26 @@ public class DoorsOf100Test {
 			Door door2Times = doors2.get(index);
 			Door door3Times = doors3.get(index);
 			assertThat(door2Times.getDoorNum()).isEqualTo(door3Times.getDoorNum());
-			if (door2Times.getDoorNum() % 3 == 0) {
+			if (door3Times.getDoorNum() % 3 == 0) {
 				assertThat(door2Times.isOpen()).isEqualTo(!door3Times.isOpen());
 			}
 		}
-
 	}
 
+	@Test
+	public void 相邻两次的开本结果相反() {
+		int oppenTime=99;
+		List<Door> doorLessList = Doors.visit(oppenTime);
+		List<Door> doorMoreList = Doors.visit(oppenTime+1);
+		assertThat(doorLessList.size()).isEqualTo(doorMoreList.size());
+		for (int index = 0; index < doorLessList.size(); index++) {
+			Door doorLess = doorLessList.get(index);
+			Door doorMore = doorMoreList.get(index);
+			assertThat(doorLess.getDoorNum()).isEqualTo(doorMore.getDoorNum());
+			if (doorMore.getDoorNum() % (oppenTime+1) == 0) {
+				assertThat(doorLess.isOpen()).isEqualTo(!doorMore.isOpen());
+			}
+		}
+	}	
+	
 }
