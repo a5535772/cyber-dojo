@@ -11,7 +11,7 @@ public class CloseToZeroTest {
 
 	@Test
 	public void should_return_zero_when_zero_exists() {
-		final int[] sourceArray = { 0, 1 };
+		final int[] sourceArray = { -1, 0, 1 };
 		int closest = closeToZero.chose(sourceArray);
 		assertThat(closest).isEqualTo(ZERO);
 	}
@@ -28,5 +28,19 @@ public class CloseToZeroTest {
 		final int[] sourceArray = { -9, -88, -71, -2, -3, -5 };
 		int closest = closeToZero.chose(sourceArray);
 		assertThat(closest).isEqualTo(-2);
+	}
+
+	@Test
+	public void should_return_positive() {
+		final int[] sourceArray = { -1, 1 };
+		int closest = closeToZero.chose(sourceArray);
+		assertThat(closest).isEqualTo(1);
+	}
+
+	@Test
+	public void should_return_closeast() {
+		final int[] sourceArray = { -9, -88, -71, -2, -3, -5, 9, -1, 88, 71, 2, 3, 5 };
+		int closest = closeToZero.chose(sourceArray);
+		assertThat(closest).isEqualTo(-1);
 	}
 }
