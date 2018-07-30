@@ -4,7 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum LCD {
-	ZERO("._.", "|.|", "|_|");
+	ZERO("._.", "|.|", "|_|"),
+	ONE("...", "..|", "..|"),
+	TWO("._.", "._|", "|_."),
+	THREE("._.", "._|", "._|"),
+	FOUR("...", "|_|", "..|"),
+	FIVE("._.", "|_.", "._|"),
+	SIX("._.", "|_.", "|_|"),
+	SEVEN("._.", "..|", "..|"),
+	EIGHT("._.", "|_|", "|_|"),
+	NINE("._.", "|_|", "..|");
 
 	private LCD(String header, String body, String foot) {
 		this.header = header;
