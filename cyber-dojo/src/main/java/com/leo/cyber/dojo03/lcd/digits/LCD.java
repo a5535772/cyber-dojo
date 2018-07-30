@@ -3,6 +3,8 @@ package com.leo.cyber.dojo03.lcd.digits;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Getter;
+
 public enum LCD {
 	ZERO("._.", "|.|", "|_|"),
 	ONE("...", "..|", "..|"),
@@ -14,6 +16,9 @@ public enum LCD {
 	SEVEN("._.", "..|", "..|"),
 	EIGHT("._.", "|_|", "|_|"),
 	NINE("._.", "|_|", "..|");
+	
+	public static final String LINE_SEPARATOR=System.getProperty("line.separator");
+	public static final String LINE_SPACE=" ";
 
 	private LCD(String header, String body, String foot) {
 		this.header = header;
@@ -21,8 +26,11 @@ public enum LCD {
 		this.foot = foot;
 	}
 
+	@Getter
 	String header;
+	@Getter
 	String body;
+	@Getter
 	String foot;
 
 	public static List<LCD> get(int[] number) {
@@ -35,17 +43,5 @@ public enum LCD {
 
 	public static LCD get(int number) {
 		return values()[number];
-	}
-
-	public void printHeader() {
-		System.out.println(this.header);
-	}
-
-	public void printBody() {
-		System.out.println(this.body);
-	}
-
-	public void printFoot() {
-		System.out.println(this.foot);
 	}
 }

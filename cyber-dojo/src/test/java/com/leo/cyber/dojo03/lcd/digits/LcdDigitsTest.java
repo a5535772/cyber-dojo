@@ -11,18 +11,51 @@ public class LcdDigitsTest {
 
 	@Test
 	public void should_print_zero() {
-		final int[] numbers = { 0 };
-		List<LCD> result = LcdDigits.printAndGet(numbers);
-		assertThat(result.size()).isEqualTo(1);
-		assertThat(result.get(0)).isEqualTo(LCD.ZERO);
+		String localResult = constructLcdString(LCD.ZERO);
+		String result = LcdDigits.printAndGet(new int[] { 0 });
+		assertThat(result).isEqualTo(localResult);
 	}
 
 	@Test
 	public void should_print_the_number() {
-		int[] numbers = new int[1];
-		numbers[0] = new Random().nextInt(9);
-		List<LCD> result = LcdDigits.printAndGet(numbers);
-		assertThat(result.size()).isEqualTo(1);
-		assertThat(result.get(0)).isEqualTo(LCD.get(numbers[0]));
+		int[] numbers = { new Random().nextInt(9) };
+		String localResult = constructLcdString(LCD.get(numbers[0]));
+		String result = LcdDigits.printAndGet(numbers);
+		assertThat(result).isEqualTo(localResult);
+	}
+
+	@Test
+	public void should_print_the_numbers() {
+		int[] numbers = { 3, 5 };
+		String localResult = constructLcdString(LCD.get(numbers));
+		String result = LcdDigits.printAndGet(numbers);
+		assertThat(result).isEqualTo(localResult);
+	}
+
+	private String constructLcdString(List<LCD> list) {
+
+		StringBuilder sb = new StringBuilder();
+
+		for (LCD lcd : list) {
+			sb.append(lcd.getHeader()).append(LCD.LINE_SPACE);
+		}
+		sb.delete(sb.lastIndexOf(LCD.LINE_SPACE), sb.length());
+		sb.append(LCD.LINE_SEPARATOR);
+		for (LCD lcd : list) {
+			sb.append(lcd.getBody()).append(LCD.LINE_SPACE);
+		}
+		sb.delete(sb.lastIndexOf(LCD.LINE_SPACE), sb.length());
+		sb.append(LCD.LINE_SEPARATOR);
+		for (LCD lcd : list) {
+			sb.append(lcd.getFoot()).append(LCD.LINE_SPACE);
+		}
+		sb.delete(sb.lastIndexOf(LCD.LINE_SPACE), sb.length());
+		return sb.toString();
+	}
+
+	private String constructLcdString(LCD zero) {
+		StringBuilder sb = new StringBuilder().append(zero.getHeader()).append(LCD.LINE_SEPARATOR)
+				.append(zero.getBody()).append(LCD.LINE_SEPARATOR).append(zero.getFoot());
+		return sb.toString();
 	}
 }
