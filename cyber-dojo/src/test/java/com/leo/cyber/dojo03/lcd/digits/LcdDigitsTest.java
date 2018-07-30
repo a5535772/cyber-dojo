@@ -32,6 +32,11 @@ public class LcdDigitsTest {
 		assertThat(result).isEqualTo(localResult);
 	}
 
+	@Test(expected=java.lang.ArrayIndexOutOfBoundsException.class)
+	public void should_throw_execption_when_number_is_bigger_than_zero() {
+		LcdDigits.printAndGet(new int[] { new Random().nextInt(9)+10 });
+	}
+
 	private String constructLcdString(List<LCD> list) {
 
 		StringBuilder sb = new StringBuilder();
