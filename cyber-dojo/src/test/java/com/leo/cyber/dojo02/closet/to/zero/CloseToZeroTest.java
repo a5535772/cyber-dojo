@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
+import com.leo.cyber.dojo02.closet.to.zero.CloseToZero;
+
 public class CloseToZeroTest {
 	CloseToZero closeToZero = new CloseToZero();
 
