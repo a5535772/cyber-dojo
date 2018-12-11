@@ -10,8 +10,15 @@ public class CloseToZero {
 				return 0;
 			}
 			maxNegativeNum = choseMaxNegativeNum(maxNegativeNum, num);
-			minPositiveNum = choseMinPositiveNum(minPositiveNum, num);
 		}
+		
+		for (int num : sourceArray) {
+			if (num == 0) {
+				return 0;
+			}
+			minPositiveNum = choseMinPositiveNum(minPositiveNum, num);
+		}		
+		
 		return choseClosest(minPositiveNum, maxNegativeNum);
 	}
 
