@@ -3,6 +3,7 @@ package com.leo.cyber.dojo05.qps;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.BDDMockito.given;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,6 +32,7 @@ public class QPSTest {
 		int oneHundred = 100;
 		// given
 		long start = System.currentTimeMillis();
+		given(timeService.getNow()).willCallRealMethod();
 		// when
 
 		for (int i = 0; i < oneHundred; i++) {
@@ -50,6 +52,7 @@ public class QPSTest {
 		List<Date> dateList=new ArrayList<>();
 		// given
 		long start = System.currentTimeMillis();
+		given(timeService.getNow()).willCallRealMethod();
 		// when
 
 		for (int i = 0; i < oneHundredAndOne; i++) {
