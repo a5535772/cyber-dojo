@@ -46,7 +46,7 @@ public class QPSTest {
 	}
 
 	@Test
-	public void when_getNow_101_times_in_one_second_will_not_pass() throws Exception {
+	public void when_getNow_101_times_in_one_second_will_only_call_100_real_service() throws Exception {
 		int oneHundred = 100;
 		int oneHundredAndOne = 101;
 		List<Date> dateList=new ArrayList<>();
