@@ -4,10 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-import com.leo.cyber.dojo02.closet.to.zero.CloseToZero;
+import com.leo.cyber.dojo02.closet.to.zero.ClosestToZero;
 
 public class CloseToZeroTest {
-	CloseToZero closeToZero = new CloseToZero();
+	ClosestToZero closeToZero = new ClosestToZero();
 
 	static final int ZERO = 0;
 
